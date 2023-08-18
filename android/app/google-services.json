@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "560405259566",
+    "project_id": "kiptrac",
+    "storage_bucket": "kiptrac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560405259566:android:fc619a0bc1db132cd8c6bf",
+        "android_client_info": {
+          "package_name": "com.actualizinginovation.kiptrac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560405259566-pppg1aua9b7khgsqquht3tbgrqh9umk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqD4HOb9H0ozA1rcv0Dcn_Q7jBPaCZ_mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560405259566-pppg1aua9b7khgsqquht3tbgrqh9umk2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
