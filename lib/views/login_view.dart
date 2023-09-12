@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import '../firebase_options.dart';
+import 'package:kiptrac/utilities/textField_folder/textfield_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -31,69 +29,66 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text('Login'),
-      ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
-        ),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              return Column(
-                children: [
-                  TextField(
-                    controller: _email,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your email here',
-                    ),
-                  ),
-                  TextField(
-                    controller: _password,
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your password here',
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      final email = _email.text;
-                      final password = _password.text;
-                      try {
-                        final userCredential = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                          email: email,
-                          password: password,
-                        );
-                        print(UserCredential);
-                      } on FirebaseAuthException catch (e) {
-                        if (e.code == 'user-not-found') {
-                          print('user not found');
-                        } else if (e.code == 'wrong-password') {
-                          print('wrong password');
-                        } else if (e.code == 'channel-error') {
-                          print('please enter your login details');
-                        }
-                        print('something else happened');
-                        print(e.code);
-                      }
-                    },
-                    child: const Text('Login'),
-                  ),
-                ],
+    return Form(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          emailField,
+          boxSize,
+          passwordField,
+          boxSize,
+          ElevatedButton(
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(
+                Colors.black,
+              ),
+            ),
+            onPressed: () async {
+              final email = _email.text;
+              final password = _password.text;
+
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/kiptrac/', (route) => false);
+              try {
+                final userCredential =
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                print(UserCredential);
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'user-not-found') {
+                  print('user not found');
+                } else if (e.code == 'wrong-password') {
+                  print('wrong password');
+                } else if (e.code == 'channel-error') {
+                  print('please enter your login details');
+                }
+                print('something else happened');
+              }
+            },
+            child: const Text(
+              'Login',
+              style: TextStyle(fontSize: 25),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                '/phone/',
+                (route) => false,
               );
-            default:
-              return const Text('Loading...');
-          }
-        },
+            },
+            child: const Text(
+              'Not registered? Click Here',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
@@ -36,6 +36,8 @@ dependencies:
   firebase_analytics: ^10.4.4
   firebase_core: ^2.15.0
   cloud_firestore: ^4.8.4
+  intl_phone_field: ^3.2.0
+  dropdown_textfield: ^1.0.8
 
 dev_dependencies:
   flutter_test:
@@ -60,8 +62,20 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets\myTask.png
+    - assets\home.png
+    - assets\stopwatch.png
+    - assets\wallet.png
+    - assets\speech-bubble.png
+    - assets\gear.png
+    - assets\schedule.png
+    - assets\oil-pump.png
+    - assets\turbocharger.png
+    - assets\water-pump.png
+    - assets\plus.png
+    - assets\notification.png
+    - assets\share.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

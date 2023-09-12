@@ -13,18 +13,22 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  late final TextEditingController _number;
 
   @override
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    _number = TextEditingController();
     super.initState();
   }
+//here usernumber is the Phone number which is to be verified
 
   @override
   void dispose() {
     _email.dispose();
     _password.dispose();
+    _number.dispose();
     super.dispose();
   }
 
@@ -32,8 +36,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text('register'),
+        title: const Text('Register'),
       ),
       body: FutureBuilder(
         future: Firebase.initializeApp(
@@ -86,6 +89,7 @@ class _RegisterViewState extends State<RegisterView> {
                     },
                     child: const Text('Register'),
                   ),
+                  const Text('or'),
                 ],
               );
             default:
